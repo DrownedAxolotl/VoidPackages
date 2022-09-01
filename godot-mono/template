@@ -1,0 +1,35 @@
+# Template file for 'godot-mono'
+pkgname=godot-mono
+version=3.5
+#version=3.4.4
+revision=1
+#archs="i686 x86_64"
+wrksrc=Godot_v"$version"-stable_mono_x11_64
+#create_wrksrc=yes
+#build_style=gnu-configure
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+nopie=true
+depends="mono mono-devel msbuild-bin"
+short_desc="The godot engine with C# support"
+maintainer="filip <iloverust666@protonmail.me>"
+license="GPL-3.0-or-later"
+homepage="https://www.godotengine.org"
+#changelog=""
+distfiles="https://downloads.tuxfamily.org/godotengine/"$version"/mono/Godot_v"$version"-stable_mono_x11_64.zip"
+checksum=ad0ca1bdf822a9af353f17f8373dbfd32862e55ca9f8230dc752b7840656b89e
+
+
+do_install() {
+	vmkdir opt/godot-mono
+	vinstall Godot_v"$version"-stable_mono_x11.64 755 opt/godot-mono godot
+	vcopy GodotSharp opt/godot-mono
+
+	vbin $FILESDIR/godot-mono
+
+	vmkdir usr/share/applications
+	vcopy $FILESDIR/godot-mono.desktop usr/share/applications
+}

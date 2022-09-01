@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Godot Mono
+Terminal=false
+Type=Application
+Icon=godot
+Exec=godot-mono
+Comment=The Godot engine with C# support.

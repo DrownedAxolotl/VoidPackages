@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=VSCodium
+Type=Application
+Icon=code
+Terminal=false
+Comment=Libre version of Microsoft's code editor
+Exec=codium
