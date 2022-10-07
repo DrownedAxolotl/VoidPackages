@@ -1,6 +1,7 @@
 # Template file for 'polymc-cracked'
 pkgname=polymc-cracked
-version=1.3.2
+#version=1.3.2
+version=1.4.2
 revision=1
 #archs="i686 x86_64"
 wrksrc=.
@@ -11,28 +12,25 @@ wrksrc=.
 #make_install_args=""
 #conf_files=""
 #make_dirs="/var/log/dir 0755 root root"
-depends="java-runtime>=0 libgcc libstdc++>=4.4.0_1 qt5-core>=5.15.2_3 	qt5-gui>=5.15.2_3 qt5-imageformats>=0 
+depends="java-runtime>=0 libgcc libstdc++>=4.4.0_1 qt5-core>=5.15.2_3   qt5-gui>=5.15.2_3 qt5-imageformats>=0
 qt5-network>=5.15.2_3 qt5-svg>=0 qt5-widgets>=5.15.2_3 qt5-xml>=5.15.2_3 xrandr>=0 zlib>=1.2.3_1"
-short_desc="Because I don't want M$ controlling my block game"
+short_desc="Powerful minecraft launcher with offline accounts"
 maintainer="filip <iloverust666@protonmail.me>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/fn2006/PollyMC"
 #changelog=""
 distfiles="${homepage}/releases/download/${version}/PollyMC-Linux-${version}.tar.gz"
-checksum=6a019440a4efb4a51115fba3d784877ddc34a8de6950f007558ae0d1e6f0160b
+checksum=fe7a5221f361e53562f75a1ba23963845a65d4eec7b46afc6507da158c2d041d
 
 
 
 do_install() {
-	echo Hi
-	echo Setting some things up for you....
+        vbin bin/pollymc
 
-	vbin bin/polymc
+        vman share/man/man6/polymc.6
 
-	vman share/man/man6/polymc.6
-
-	vcopy share/applications usr/share
-	vcopy share/icons usr/share
-	vcopy share/jars usr/share
-	vcopy share/metainfo usr/share
+        vcopy share/applications usr/share
+        vcopy share/icons usr/share
+        vcopy share/jars usr/share
+        vcopy share/metainfo usr/share
 }
