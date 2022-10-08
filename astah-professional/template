@@ -1,0 +1,36 @@
+# Template file for 'astah'
+pkgname=astah-professional
+version=8.5.0
+revision=1
+#archs="i686 x86_64"
+#wrksrc=
+#create_wrksrc=yes
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="tar"
+makedepends=""
+depends="openjdk8-jre"
+short_desc="Fully featured tool for designing UML, ER diagrams."
+maintainer="filip <iloverust666@proton.me>"
+license="GPL-3.0-or-later"
+_pkgname=${pkgname//-/_}
+_pkgver=${version//./_}
+_pkgrel=39c620
+homepage="http://astah.net/products/astah-professional"
+#changelog=""
+distfiles="https://cdn.change-vision.com/files/astah-professional_${version}.${_pkgrel}-0_all.deb"
+checksum=c36352e3e73fcd29f42f5eceef0d8369cfb9a102d9fb32722c868dc2b6081368
+
+do_extract() {
+	ar -x $XBPS_SRCDISTDIR/$pkgname-$version/astah-professional_${version}.${_pkgrel}-0_all.deb
+}
+
+do_install() {
+	tar -xf data.tar.gz
+	vcopy usr/lib usr
+	vcopy usr/share usr
+	vbin $FILESDIR/astah-pro
+}
