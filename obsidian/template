@@ -1,0 +1,32 @@
+# Template file for 'obsidian'
+pkgname=obsidian
+version=1.0.3
+revision=1
+#archs="i686 x86_64"
+#wrksrc=
+#create_wrksrc=yes
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends=""
+makedepends=""
+depends="zlib fuse"
+short_desc="A powerful knowledge base utilizing markup files."
+maintainer="filip <iloverust666@proton.me>"
+license="GPL-3.0-or-later"
+homepage="https://obsidian.md/"
+#changelog=""
+distfiles="https://github.com/obsidianmd/obsidian-releases/releases/download/v${version}/obsidian-${version}.tar.gz"
+checksum=329424e60e35f386640808cb539520d11796815003b244b542e31c9cf74da1fb
+
+
+do_install() {
+	vmkdir opt/obsidian
+	vcopy ./* opt/obsidian
+	vbin $FILESDIR/obsidian
+
+	vmkdir usr/share/applications
+	vcopy $FILESDIR/obsidian.desktop usr/share/applications
+}

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Obsidian
+Type=Application
+Terminal=false
+Icon=obsidian
+Exec=obsidian
