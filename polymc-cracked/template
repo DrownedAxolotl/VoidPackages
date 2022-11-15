@@ -27,7 +27,7 @@ checksum=fe7a5221f361e53562f75a1ba23963845a65d4eec7b46afc6507da158c2d041d
 do_install() {
         vbin bin/pollymc
 
-        vman share/man/man6/polymc.6
+        vman share/man/man6/pollymc.6
 
         vcopy share/applications usr/share
         vcopy share/icons usr/share
