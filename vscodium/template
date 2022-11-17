@@ -1,0 +1,33 @@
+# Template file for 'vscodium-bin'
+pkgname=vscodium
+version=1.73.1.22314
+revision=1
+#archs="i686 x86_64"
+wrksrc=.
+#create_wrksrc=yes
+#build_style=gnu-configure
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+depends="fontconfig libXtst gtk+3 python3 cairo alsa-lib nss libgcc libnotify libXScrnSaver"
+short_desc="Microsoft's VSCode without telemetry/spyware"
+maintainer="filip <iloverust666@protonmail.me>"
+license="MIT"
+homepage="https://github.com/VSCodium/vscodium"
+#changelog=""
+distfiles="${homepage}/releases/download/${version}/VSCodium-linux-x64-${version}.tar.gz"
+checksum=b97abd27933900990088e578119432bf6f575c866e2c86061f9b3a101ec4d527
+
+do_install() {
+	vmkdir opt/codium
+	vbin $FILESDIR/codium
+	vmkdir usr/share/applications
+	vcopy $FILESDIR/codium.desktop usr/share/applications
+
+	vmkdir usr/share/pixmaps
+	vcopy resources/app/resources/linux/code.png usr/share/pixmaps
+
+	vcopy ./* opt/codium
+}
