@@ -1,7 +1,7 @@
 # Template file for 'polymc-cracked'
 pkgname=polymc-cracked
 #version=1.3.2
-version=1.4.2
+version=5.2
 revision=1
 #archs="i686 x86_64"
 wrksrc=.
@@ -20,17 +20,16 @@ license="GPL-3.0-or-later"
 homepage="https://github.com/fn2006/PollyMC"
 #changelog=""
 distfiles="${homepage}/releases/download/${version}/PollyMC-Linux-${version}.tar.gz"
-checksum=fe7a5221f361e53562f75a1ba23963845a65d4eec7b46afc6507da158c2d041d
+checksum=10a9db41383fd449d94f5a51ade560c1367a997f905cefada84a204ec2587437
 
 
 
 do_install() {
         vbin bin/pollymc
-
+	
         vman share/man/man6/pollymc.6
-
         vcopy share/applications usr/share
         vcopy share/icons usr/share
-        vcopy share/jars usr/share
+	vcopy share/pollymc usr/share
         vcopy share/metainfo usr/share
 }
