@@ -1,0 +1,36 @@
+# Template file for 'onlyoffice'
+pkgname=onlyoffice
+version=7.2.1
+revision=1
+nopie=0
+#archs="i686 x86_64"
+#wrksrc=desktopeditors
+#create_wrksrc=yes
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="rpmextract"
+makedepends=""
+depends="qt5-multimedia libstdc++"
+short_desc="All in one free office suite"
+maintainer="axolotl <iloverust666@proton.me>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/ONLYOFFICE/DesktopEditors"
+#changelog=""
+distfiles="$homepage/releases/download/v$version/onlyoffice-desktopeditors.x86_64.rpm"
+checksum=ee6968da52b8a5f92e6faed9e2eeb19b935978f9381ac8a6e98824e9ada546f6
+
+do_install() {
+
+	#Take care of icons
+	vmkdir usr/share/pixmaps
+	vcopy opt/onlyoffice/desktopeditors/asc-de-256.png usr/share/pixmaps
+	
+	cp $FILESDIR/onlyoffice-desktopeditors.desktop usr/share/applications
+	
+	vmkdir opt/onlyoffice
+	vcopy opt/* opt
+	vcopy usr/* usr
+}
